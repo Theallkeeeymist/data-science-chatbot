@@ -5,8 +5,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_pinecone import PineconeVectorStore
 import random
 
-from chatbot.src_logging.logger import logging
-from chatbot.exception.exception import ChatbotException
+from chatbot.components.src_logging.logger import logging
+from chatbot.components.exception.exception import ChatbotException
 
 load_dotenv()
 
@@ -46,10 +46,3 @@ class RagEngine:
             return question_text, answer_text
         except Exception as e:
             raise ChatbotException(e, sys)
-
-# Test
-# if __name__ == "__main__":
-#     engine = RagEngine()
-#     q, a = engine.get_interview_question("Machine Learning")
-#     print(f"Question: {q}")
-#     print(f"Hidden Answer: {a[:100]}...") # Printing only first 100 chars

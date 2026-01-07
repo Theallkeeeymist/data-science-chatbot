@@ -25,6 +25,7 @@ scikit-learn
 torch
 sentence-transformers
 streamlit
+streamlit-ace
 pydantic
 datasets
 requests
