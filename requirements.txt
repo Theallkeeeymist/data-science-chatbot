@@ -46,3 +46,6 @@ pinecone-client
 # Backend
 fastapi
 uvicorn
+
+# backend DB
+sqlalchemy
