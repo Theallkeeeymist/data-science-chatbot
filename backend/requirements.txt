@@ -1,0 +1,36 @@
+# API Server
+fastapi
+uvicorn
+python-dotenv
+pydantic
+
+# Database
+sqlalchemy
+
+# LangChain Ecosystem
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain-experimental
+
+# LLM Providers
+langchain-google-genai
+google-generativeai
+langchain-huggingface
+transformers
+huggingface-hub
+
+# Vector Database
+langchain-pinecone
+pinecone-client
+
+# ML & Data Processing
+numpy
+scikit-learn
+torch
+sentence-transformers
+datasets
+
+# Utilities
+beautifulsoup4

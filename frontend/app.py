@@ -17,7 +17,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- API CONFIGURATION ---
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 API_AUTH = f"{BASE_URL}/api/auth"
 API_INTERVIEW = f"{BASE_URL}/api/interview"
 
