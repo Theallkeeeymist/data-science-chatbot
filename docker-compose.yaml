@@ -2,24 +2,22 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend
+    image: 850960379966.dkr.ecr.us-east-1.amazonaws.com/interview-backend:latest
     container_name: interview-backend
     ports:
       - "8000:8000"
     volumes:
-      # PERSISTENCE: Mount the database file to the host machine
-      # This ensures your users aren't deleted when you redeploy!
       - ./interview_app.db:/app/interview_app.db
     environment:
-      - GOOGLE_API_KEY=${GOOGLE_API_KEY}  # Passed from .env or CI/CD secrets
+      HUGGINGFACEHUB_API_TOKEN: ${HUGGINGFACEHUB_API_TOKEN}
+
 
   frontend:
-    build: ./frontend
+    image: 850960379966.dkr.ecr.us-east-1.amazonaws.com/interview-frontend:latest
     container_name: interview-frontend
     ports:
       - "8501:8501"
     environment:
-      # Networking: 'backend' here refers to the service name above
-      - API_URL=http://backend:8000
+      API_URL: http://backend:8000
     depends_on:
       - backend
