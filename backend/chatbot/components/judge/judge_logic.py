@@ -34,13 +34,15 @@ class InterviewJudge:
         except Exception as e:
             raise ChatbotException(e, sys)
     
-    def evaluate_interview(self, transcript_text): # Changed argument name for clarity
+    def evaluate_interview(self, transcript_text):
         try:
-            # FIX: Removed the loop. We assume transcript_text is already a formatted string.
+            # Removed the loop. We assume transcript_text is already a formatted string.
             
             prompt = PromptTemplate(
                 template="""
-                You are a Senior Data Science Hiring Manager. Evaluate this interview transcript.
+                You are an experienced Senior Data Scientist from Amazon. Evaluate this interview transcript.
+                Based on time taken to answer questions, the way questions were answered and the resume that is parsed. 
+                Be critical of mistakes and very very very critical in selecting a candidate.
                 
                 TRANSCRIPT:
                 {transcript}

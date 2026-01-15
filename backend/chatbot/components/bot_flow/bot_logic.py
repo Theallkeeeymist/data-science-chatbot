@@ -9,7 +9,7 @@ load_dotenv()
 
 class InterviewLoop:
     def __init__(self, role, resume_context=None):
-        # 1. Setup Model (Exactly as in your script)
+        # 1. Setup Model
         self.llm = HuggingFaceEndpoint(
             repo_id="meta-llama/Llama-3.1-8B-Instruct",
             huggingfacehub_api_token=os.getenv("HUGGINGFACE_HUB_ACCESS_KEY"),
@@ -22,7 +22,7 @@ class InterviewLoop:
         self.resume_context = resume_context if resume_context else "no resume provided"
         self.role = role
 
-        # 2. Initial Chat History (Exactly as in your script)
+        # 2. Initial Chat History
         sys_msg = ChatPromptTemplate.from_messages(
             ("system", """You are a 5 year experienced data scientist at Amazon. You are conducting an interview for a {role} role.
             First check if {resume_context} is provided, if it is provided parse data from it to ask about projects experience and basically
@@ -35,7 +35,7 @@ class InterviewLoop:
             1. Ask ONE question at a time.
             2. Wait for the user's answer.
             3. If the answer is good, move to the next topic. If bad, ask a clarifying question DONT JUST TELL WHAT'S WRONG TRY TO GET 
-             ANSWERS FROM THE USER IF IT FAILS TO THEN PROVIDE ANSWER(and deduct marks based on this).
+               ANSWERS FROM THE USER IF IT FAILS TO THEN PROVIDE ANSWER(and deduct marks based on this).
             4. You must ask 5 or so technical questions in total and it should include Coding question too.
             5. Questions must cover different topics like Statistics, ML, Deep Learning, SQL, Query Writing, coding etc.
             6. Based on the answer keep how many questions to be asked but the minimum count is 4 and max is 15, output "INTERVIEW_FINISHED" and provide a final Pass/Fail verdict.
